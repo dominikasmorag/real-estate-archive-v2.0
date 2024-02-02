@@ -29,18 +29,20 @@ public class ResultInfo {
                 float squareFootage = findSquareFootage(element);
                 BigDecimal price = findPrice(element);
                 String link = findLink(element);
+                String imgUrl = findImgUrl(element);
                 Result result = new Result();
                 result.setLocation(location);
                 result.setDescription(description);
                 result.setSquareFootage(squareFootage);
                 result.setPrice(price);
                 result.setLink(link);
+                result.setImgUrl(imgUrl);
                 results.add(result);
             }
         }
-        for(Result r : results) {
-            System.out.println(r);
-        }
+//        for(Result r : results) {
+//            System.out.println(r);
+//        }
     }
 
     public Elements findElements() {
@@ -71,6 +73,12 @@ public class ResultInfo {
 
     private String findLink(Element element) {
         return element.getElementsByAttributeValue("class", "property_link").attr("href");
+    }
+
+    private String findImgUrl(Element element) {
+        System.out.println("findImgUrl()");
+        System.out.println(element.tagName("img").getElementsByAttributeValue("class", "").attr("src"));
+        return element.getElementsByAttributeValue("class", "PhotoThumbnail").attr("src");
     }
 
     private Date findPostingDate() {
