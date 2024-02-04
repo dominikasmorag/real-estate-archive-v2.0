@@ -10,6 +10,7 @@ public class Result {
     private float squareFootage;
     private BigDecimal price;
     private String link;
+    private String imgUrl;
     private Date postingDate;
     private long duration;
 
@@ -59,6 +60,12 @@ public class Result {
     public void setLink(String link) {
         this.link = link;
     }
+    public String getImgUrl() {
+        return imgUrl;
+    }
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
     public Date getPostingDate() {
         return postingDate;
     }
@@ -84,6 +91,7 @@ public class Result {
                 ", squareFootage=" + squareFootage +
                 ", price=" + price +
                 ", link='" + link + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 ", postingDate=" + postingDate +
                 ", duration=" + duration +
                 '}';

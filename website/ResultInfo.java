@@ -4,10 +4,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import pl.dominikasmorag.DateConverter;
 import pl.dominikasmorag.pojo.Result;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,12 +31,16 @@ public class ResultInfo {
                 float squareFootage = findSquareFootage(element);
                 BigDecimal price = findPrice(element);
                 String link = findLink(element);
+                String imgUrl = findImgUrl(element);
+                Date date = findPostingDate(element);
                 Result result = new Result();
                 result.setLocation(location);
                 result.setDescription(description);
                 result.setSquareFootage(squareFootage);
                 result.setPrice(price);
                 result.setLink(link);
+                result.setImgUrl(imgUrl);
+                result.setPostingDate(date);
                 results.add(result);
             }
         }
@@ -73,7 +79,17 @@ public class ResultInfo {
         return element.getElementsByAttributeValue("class", "property_link").attr("href");
     }
 
-    private Date findPostingDate() {
-        return new Date();
+    private String findImgUrl(Element element) {
+        Elements e = element.getElementsByAttributeValue("class", "PhotoThumbnail");
+        return e.select("img").attr("data-original");
+
+    }
+
+    private Date findPostingDate(Element element) {
+        String dateStr = element.getElementsByAttributeValue("class", "addedAt").text();
+        dateStr.trim();
+        DateConverter dateConverter = new DateConverter();
+        Date date = dateConverter.convertDate(dateStr);
+        return date;
     }
 }
