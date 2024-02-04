@@ -38,6 +38,12 @@
             <version>2.2.224</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>h2</groupId>
+            <artifactId>h2</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+
 
 
     </dependencies>
