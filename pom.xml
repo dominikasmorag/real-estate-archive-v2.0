@@ -23,6 +23,11 @@
             <version>1.17.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>h2</groupId>
+            <artifactId>h2</artifactId>
+            <version>0.2.0</version>
+        </dependency>
 
     </dependencies>
 
