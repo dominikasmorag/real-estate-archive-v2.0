@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBase {
-    private static final String CREATE_RESULT_TABLE =  "CREATE TABLE RESULTS (" +
+    private static final String CREATE_RESULT_TABLE =  "CREATE TABLE IF NOT EXISTS RESULTS (" +
             "ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY," +
             "LOCATION VARCHAR(200)," +
             "DESCRIPTION VARCHAR(300)," +
