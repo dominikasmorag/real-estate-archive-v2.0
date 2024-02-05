@@ -8,6 +8,7 @@ public class DateConverter extends Date {
     private static final long FULL_DAY_IN_MILLIS = 864 * 100000;
 
     public Date convertDate(String dateStr) {
+        dateStr = dateStr.toLowerCase().trim();
         if(dateStr.contains(DayOfWeek.YESTERDAY.name) || dateStr.contains(DayOfWeek.TODAY.name)) {
             try {
                 dateStr = dateStr.replaceAll("data: ", "");
@@ -61,7 +62,7 @@ public class DateConverter extends Date {
     }
 
     private Date turnIntoFulLDate(Date date) {
-        Date d = new Date((date.getYear() + 1900), (date.getMonth() + 1), date.getDate());
+        Date d = new Date(date.getYear(), date.getMonth(), date.getDate());
         return d;
     }
 
@@ -74,5 +75,5 @@ public class DateConverter extends Date {
             this.name = name;
         }
     }
-    
+
 }
