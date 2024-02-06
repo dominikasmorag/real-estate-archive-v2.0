@@ -14,6 +14,31 @@ public class Result {
     private Date postingDate;
     private long duration;
 
+    public Result (int id, String location, String description, float squareFootage, BigDecimal price, String link, String imgUrl, Date postingDate, long duration) {
+        this.id = id;
+        this.location = location;
+        this.description = description;
+        this.squareFootage = squareFootage;
+        this.price = price;
+        this.link = link;
+        this.imgUrl = imgUrl;
+        this.postingDate = postingDate;
+        this.duration = duration;
+    }
+
+    public Result (String location, String description, float squareFootage, BigDecimal price, String link, String imgUrl, Date postingDate, long duration) {
+        this.location = location;
+        this.description = description;
+        this.squareFootage = squareFootage;
+        this.price = price;
+        this.link = link;
+        this.imgUrl = imgUrl;
+        this.postingDate = postingDate;
+        this.duration = duration;
+    }
+
+    public Result() {}
+
     public int getId() {
         return id;
     }
