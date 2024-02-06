@@ -19,9 +19,23 @@ class DateConverterTest {
     }
 
     @Test
-    void todayPrintsTodayDate() {
+    void todayReturnsTodayDate() {
         Date todayDate = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         assertEquals(todayDate, dateConverter.convertDate(" DZisIaj "));
+    }
+
+    @Test
+    void wrongDateFormatReturnsNull() {
+        Date todayDate = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        System.out.println(todayDate);
+        assertNull(dateConverter.convertDate("12-30-2024"));
+        assertNull(dateConverter.convertDate("2024-12-30"));
+        assertNull(dateConverter.convertDate("30-2024-12"));
+    }
+
+    @Test
+    void nullReturnsNull() {
+        assertNull(null);
     }
 
 }
