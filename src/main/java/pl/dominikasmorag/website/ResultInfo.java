@@ -21,6 +21,9 @@ public class ResultInfo {
 
     public ResultInfo(WebsiteInfo websiteInfo) throws IOException {
         urls = websiteInfo.urlWithPages();
+    }
+
+    public List<Result> scrapAllResults() throws IOException {
         List<Result> results = new ArrayList<>();
         for(String s : urls) {
             document = Jsoup.connect(s).timeout(10 * 1000).get();
@@ -44,9 +47,7 @@ public class ResultInfo {
                 results.add(result);
             }
         }
-        for(Result r : results) {
-            System.out.println(r);
-        }
+        return results;
     }
 
     public Elements findElements() {
@@ -87,9 +88,8 @@ public class ResultInfo {
 
     private Date findPostingDate(Element element) {
         String dateStr = element.getElementsByAttributeValue("class", "addedAt").text();
-        dateStr.trim();
+        dateStr = dateStr.trim();
         DateConverter dateConverter = new DateConverter();
-        Date date = dateConverter.convertDate(dateStr);
-        return date;
+        return dateConverter.convertDate(dateStr);
     }
 }
