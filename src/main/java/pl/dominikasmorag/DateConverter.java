@@ -51,6 +51,9 @@ public class DateConverter extends Date {
         int year = Integer.parseInt(splitted[2]);
         int month = Integer.parseInt(splitted[1]);
         int day = Integer.parseInt(splitted[0]);
+        if(day > 31 || month > 12 || year < 2020 ) {
+            return null;
+        }
 
 
         Calendar calendar = Calendar.getInstance();
@@ -58,7 +61,14 @@ public class DateConverter extends Date {
         calendar.set(Calendar.MONTH, month);
         calendar.set(Calendar.DAY_OF_MONTH, day);
 
-        return calendar.getTime();
+        Date today = new Date(System.currentTimeMillis());
+        Date date = calendar.getTime();
+        if(date.before(today)) {
+            return date;
+        }
+        else {
+            return null;
+        }
     }
 
     private Date turnIntoFulLDate(Date date) {
