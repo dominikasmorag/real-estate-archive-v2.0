@@ -33,15 +33,12 @@ public class DateConverter extends Date {
 
     private Date dateByDayOfWeek(String dateStr) throws ParseException {
 
-        long now = System.currentTimeMillis();
         dateStr = dateStr.trim();
         if(dateStr.equalsIgnoreCase(DayOfWeek.YESTERDAY.name)) {
-            long l = now - FULL_DAY_IN_MILLIS;
-            return turnIntoFulLDate(new Date(l));
+            return turnIntoFulLDate(new Date(System.currentTimeMillis() - FULL_DAY_IN_MILLIS));
         }
         else if(dateStr.equalsIgnoreCase(DayOfWeek.TODAY.name)) {
-            long l = now;
-            return turnIntoFulLDate(new Date(l));
+            return turnIntoFulLDate(new Date(System.currentTimeMillis()));
         }
         return null;
     }
@@ -79,7 +76,7 @@ public class DateConverter extends Date {
     enum DayOfWeek {
         YESTERDAY("wczoraj"),
         TODAY("dzisiaj");
-        private String name;
+        private final String name;
 
         DayOfWeek(String name) {
             this.name = name;
