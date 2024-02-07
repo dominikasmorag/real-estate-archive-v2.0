@@ -19,7 +19,7 @@ public class ResultInfo {
     public Elements elements;
     private Document document;
 
-    public ResultInfo(WebsiteInfo websiteInfo) throws IOException {
+    public ResultInfo(WebsiteInfo websiteInfo) {
         urls = websiteInfo.urlWithPages();
     }
 
@@ -29,6 +29,7 @@ public class ResultInfo {
             document = Jsoup.connect(s).timeout(10 * 1000).get();
             elements = findElements();
             for(Element element : elements) {
+                long start = System.currentTimeMillis();
                 String location = findLocation(element);
                 String description = findDescription(element);
                 float squareFootage = findSquareFootage(element);
@@ -45,6 +46,7 @@ public class ResultInfo {
                 result.setImgUrl(imgUrl);
                 result.setPostingDate(date);
                 results.add(result);
+                result.setDuration(System.currentTimeMillis() - start);
             }
         }
         return results;
