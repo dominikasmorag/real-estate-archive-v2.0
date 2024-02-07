@@ -26,13 +26,12 @@ public class WebsiteInfo {
     /** calculates the number of pages **/
     int pages() throws IOException {
         int pages = 0;
-        Document doc = Jsoup.connect(URL1 + FIRST_PAGE + URL2).timeout(10 * 1000).get();
+        Document doc = Jsoup.connect(URL1 + FIRST_PAGE + URL2).timeout(10 * 2000).get();
         int numberOfOffers = offersNumber(doc);
         do {
             pages++;
             numberOfOffers -= 75;
         } while(numberOfOffers>0);
-        System.out.println("PAGES: " + pages);
         return pages;
     }
 
