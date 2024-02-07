@@ -2,10 +2,7 @@ package pl.dominikasmorag.DataBase;
 
 import pl.dominikasmorag.pojo.Result;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,14 +26,16 @@ public class ResultDao implements DAO<Result> {
     @Override
     public void save(Result result) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("INSERT INTO " + DataBase.RESULTS_TABLE_NAME +
-                "(LOCATION, SQM, PRICE, LINK, IMG_URL, POSTING_DATE, DURATION) VALUES (?, ?, ?, ?, ?, ?, ?");
+                "(LOCATION, DESCRIPTION, SQM, PRICE, LINK, IMG_URL, POSTING_DATE, DURATION_IN_MILLIS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         statement.setString(1, result.getLocation());
-        statement.setFloat(2, result.getSquareFootage());
-        statement.setBigDecimal(3, result.getPrice());
-        statement.setString(4, result.getLink());
-        statement.setString(5, result.getImgUrl());
-        statement.setDate(6, (Date) result.getPostingDate());
-        statement.setLong(7, result.getDuration());
+        statement.setString(2, result.getDescription());
+        statement.setFloat(3, result.getSquareFootage());
+        statement.setBigDecimal(4, result.getPrice());
+        statement.setString(5, result.getLink());
+        statement.setString(6, result.getImgUrl());
+        java.util.Date date = result.getPostingDate();
+        statement.setDate(7, new Date(date.getYear(), date.getMonth(), date.getDate()));
+        statement.setLong(8, result.getDuration());
         statement.executeUpdate();
     }
 
