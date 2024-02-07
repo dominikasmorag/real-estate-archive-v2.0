@@ -1,7 +1,7 @@
 package pl.dominikasmorag;
 
+
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 
 public class DateConverter extends Date {
@@ -52,20 +52,9 @@ public class DateConverter extends Date {
             return null;
         }
 
+        Date date = new Date(year - 1900, month - 1, day);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-
-        Date today = new Date(System.currentTimeMillis());
-        Date date = calendar.getTime();
-        if(date.before(today)) {
-            return date;
-        }
-        else {
-            return null;
-        }
+        return date;
     }
 
     private Date turnIntoFulLDate(Date date) {
