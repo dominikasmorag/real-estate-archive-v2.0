@@ -2,10 +2,10 @@ package pl.dominikasmorag;
 
 import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 import org.h2.jdbcx.JdbcDataSource;
-import pl.dominikasmorag.DataBase.DAO;
 import pl.dominikasmorag.DataBase.DataBase;
 import pl.dominikasmorag.DataBase.ResultDao;
 import pl.dominikasmorag.pojo.Result;
+import pl.dominikasmorag.user_utilities.export.ExportHTML;
 import pl.dominikasmorag.website.ResultInfo;
 import pl.dominikasmorag.website.WebsiteInfo;
 
@@ -27,10 +27,10 @@ public class Main {
             Connection connection = dataSource.getConnection();
             DataBase db = new DataBase(connection);
             db.createSchema();
+            ResultDao resultDAO = new ResultDao(connection);
             WebsiteInfo websiteInfo = WebsiteInfo.getInstance();
             ResultInfo resultInfo = new ResultInfo(websiteInfo);
-            List<Result> results = resultInfo.scrapAllResults();
-            DAO<Result> resultDAO = new ResultDao(connection);
+            List<Result> results = resultInfo.scrapAllResults(resultDAO.findAllLinks());
 
             for(Result r : results) {
                 try {
@@ -39,6 +39,13 @@ public class Main {
                     System.err.println(ex.getMessage());
                 }
             }
+                System.out.println("getting data from db: ");
+                ExportHTML exportHtml = new ExportHTML(resultDAO);
+                exportHtml.collectData();
+                for(Result r :exportHtml.resultList) {
+                    System.out.println(r);
+                }
+
         } catch (SQLException | IOException ex) {
             ex.printStackTrace();
         }
