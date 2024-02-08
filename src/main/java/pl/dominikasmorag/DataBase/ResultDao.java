@@ -26,7 +26,7 @@ public class ResultDao implements DAO<Result> {
     @Override
     public void save(Result result) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("INSERT INTO " + DataBase.RESULTS_TABLE_NAME +
-                "(LOCATION, DESCRIPTION, SQM, PRICE, LINK, IMG_URL, POSTING_DATE, DURATION_IN_MILLIS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                "(LOCATION, DESCRIPTION, SQM, PRICE, LINK, IMG_URL, POSTING_DATE, WEB_SCRAPING_TIMESTAMP) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         statement.setString(1, result.getLocation());
         statement.setString(2, result.getDescription());
         statement.setFloat(3, result.getSquareFootage());
@@ -35,7 +35,7 @@ public class ResultDao implements DAO<Result> {
         statement.setString(6, result.getImgUrl());
         java.util.Date date = result.getPostingDate();
         statement.setDate(7, new Date(date.getYear(), date.getMonth(), date.getDate()));
-        statement.setLong(8, result.getDuration());
+        statement.setTimestamp(8, result.getTimestamp());
         statement.executeUpdate();
     }
 
