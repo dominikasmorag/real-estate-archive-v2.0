@@ -15,7 +15,7 @@ public class DataBase {
             "LINK VARCHAR(400) UNIQUE," +
             "IMG_URL VARCHAR(300)," +
             "POSTING_DATE DATE," +
-            "DURATION_IN_MILLIS LONG);" ;
+            "WEB_SCRAPING_TIMESTAMP TIMESTAMP);" ;
     private Statement statement;
     private final Connection connection;
 
