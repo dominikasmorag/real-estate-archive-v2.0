@@ -25,7 +25,7 @@ public class ResultInfo {
         urls = websiteInfo.urlWithPages();
     }
 
-    public List<Result> scrapAllResults() throws IOException {
+    public List<Result> scrapAllResults(List<String> existingResults) throws IOException {
         List<Result> results = new ArrayList<>();
         for(String s : urls) {
             document = Jsoup.connect(s).timeout(10 * 1000).get();
@@ -36,6 +36,9 @@ public class ResultInfo {
                 float squareFootage = findSquareFootage(element);
                 BigDecimal price = findPrice(element);
                 String link = findLink(element);
+                if(existingResults.contains(link)) {
+                    continue;
+                }
                 String imgUrl = findImgUrl(element);
                 Date date = findPostingDate(element);
                 Result result = new Result();
