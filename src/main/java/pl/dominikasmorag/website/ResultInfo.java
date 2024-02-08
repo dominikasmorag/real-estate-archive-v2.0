@@ -10,6 +10,8 @@ import pl.dominikasmorag.pojo.Result;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +31,6 @@ public class ResultInfo {
             document = Jsoup.connect(s).timeout(10 * 1000).get();
             elements = findElements();
             for(Element element : elements) {
-                long start = System.currentTimeMillis();
                 String location = findLocation(element);
                 String description = findDescription(element);
                 float squareFootage = findSquareFootage(element);
@@ -46,7 +47,7 @@ public class ResultInfo {
                 result.setImgUrl(imgUrl);
                 result.setPostingDate(date);
                 results.add(result);
-                result.setDuration(System.currentTimeMillis() - start);
+                result.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
             }
         }
         return results;
