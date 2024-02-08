@@ -1,4 +1,4 @@
-package pl.dominikasmorag.command;
+package pl.dominikasmorag.user_utilities.command;
 
 public interface Command {
 
