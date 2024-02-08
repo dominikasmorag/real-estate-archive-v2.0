@@ -1,6 +1,7 @@
 package pl.dominikasmorag.pojo;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Result {
@@ -12,9 +13,9 @@ public class Result {
     private String link;
     private String imgUrl;
     private Date postingDate;
-    private long duration;
+    private Timestamp timestamp;
 
-    public Result (int id, String location, String description, float squareFootage, BigDecimal price, String link, String imgUrl, Date postingDate, long duration) {
+    public Result (int id, String location, String description, float squareFootage, BigDecimal price, String link, String imgUrl, Date postingDate, Timestamp timestamp) {
         this.id = id;
         this.location = location;
         this.description = description;
@@ -23,10 +24,10 @@ public class Result {
         this.link = link;
         this.imgUrl = imgUrl;
         this.postingDate = postingDate;
-        this.duration = duration;
+        this.timestamp = timestamp;
     }
 
-    public Result (String location, String description, float squareFootage, BigDecimal price, String link, String imgUrl, Date postingDate, long duration) {
+    public Result (String location, String description, float squareFootage, BigDecimal price, String link, String imgUrl, Date postingDate, Timestamp timestamp) {
         this.location = location;
         this.description = description;
         this.squareFootage = squareFootage;
@@ -34,7 +35,7 @@ public class Result {
         this.link = link;
         this.imgUrl = imgUrl;
         this.postingDate = postingDate;
-        this.duration = duration;
+        this.timestamp = timestamp;
     }
 
     public Result() {}
@@ -99,12 +100,12 @@ public class Result {
         this.postingDate = postingDate;
     }
 
-    public long getDuration() {
-        return duration;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -118,7 +119,7 @@ public class Result {
                 ", link='" + link + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", postingDate=" + postingDate +
-                ", duration=" + duration +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }
