@@ -31,14 +31,14 @@ public class ResultInfo {
             document = Jsoup.connect(s).timeout(10 * 1000).get();
             elements = findElements();
             for(Element element : elements) {
-                String location = findLocation(element);
-                String description = findDescription(element);
-                float squareFootage = findSquareFootage(element);
-                BigDecimal price = findPrice(element);
                 String link = findLink(element);
                 if(existingResults.contains(link)) {
                     continue;
                 }
+                String location = findLocation(element);
+                String description = findDescription(element);
+                float squareFootage = findSquareFootage(element);
+                BigDecimal price = findPrice(element);
                 String imgUrl = findImgUrl(element);
                 Date date = findPostingDate(element);
                 Result result = new Result();
