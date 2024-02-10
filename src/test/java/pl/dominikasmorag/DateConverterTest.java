@@ -39,7 +39,7 @@ class DateConverterTest {
     }
 
     @Test
-    void dateRetursDate() {
+    void dateReturnsDate() {
         assertEquals(new Date (2023 - 1900, 9 - 1 , 8), dateConverter.convertDate("08-09-2023"));
     }
 
