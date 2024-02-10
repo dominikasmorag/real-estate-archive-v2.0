@@ -52,14 +52,11 @@ public class DateConverter extends Date {
             return null;
         }
 
-        Date date = new Date(year - 1900, month - 1, day);
-
-        return date;
+        return new Date(year - 1900, month - 1, day);
     }
 
     private Date turnIntoFulLDate(Date date) {
-        Date d = new Date(date.getYear(), date.getMonth(), date.getDate());
-        return d;
+        return new Date(date.getYear(), date.getMonth(), date.getDate());
     }
 
     enum DayOfWeek {
