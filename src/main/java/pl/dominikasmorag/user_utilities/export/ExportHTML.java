@@ -3,27 +3,35 @@ package pl.dominikasmorag.user_utilities.export;
 import pl.dominikasmorag.DataBase.DAO;
 import pl.dominikasmorag.pojo.Result;
 
-import java.sql.SQLException;
-import java.util.List;
+import java.io.*;
 
-public class ExportHTML implements ExportStrategy {
-    public List<Result> resultList;
-    private DAO<Result> dao;
+public class ExportHTML extends ExportStrategy {
+    private final static String EXTENSION = ".html";
 
-    public ExportHTML(DAO<Result> dao) {
-        this.dao = dao;
-    }
-    @Override
-    public void collectData() {
-        try {
-            this.resultList = dao.findAll();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+    public ExportHTML(DAO<Result> resultDao) {
+        super(resultDao);
+        fileName += EXTENSION;
     }
 
     @Override
     public void export() {
-
+        try {
+            collectData();
+            File file =  createFile();
+            BufferedWriter bf = createBufferedWriter(file);
+            saveDataToFile(bf);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
+
+    protected void saveDataToFile(BufferedWriter bufferedWriter) {
+        try {
+            bufferedWriter.write("test html");
+            bufferedWriter.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
