@@ -1,14 +1,17 @@
-package pl.dominikasmorag.user_utilities.export;
+package pl.dominikasmorag.ui.export;
 
 import pl.dominikasmorag.DataBase.DAO;
 import pl.dominikasmorag.pojo.Result;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
 
-public class ExportHTML extends ExportStrategy {
-    private final static String EXTENSION = ".html";
+public class ExportCSV extends ExportStrategy {
 
-    public ExportHTML(DAO<Result> resultDao) {
+    private final static String EXTENSION = ".csv";
+
+    public ExportCSV(DAO<Result> resultDao) {
         super(resultDao);
         fileName += EXTENSION;
     }
@@ -27,7 +30,7 @@ public class ExportHTML extends ExportStrategy {
 
     protected void saveDataToFile(BufferedWriter bufferedWriter) {
         try {
-            bufferedWriter.write("test html");
+            bufferedWriter.write("test csv");
             bufferedWriter.close();
         } catch (IOException ex) {
             ex.printStackTrace();

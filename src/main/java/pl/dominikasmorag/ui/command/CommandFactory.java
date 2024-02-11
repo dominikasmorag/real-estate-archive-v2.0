@@ -1,11 +1,11 @@
-package pl.dominikasmorag.user_utilities.command;
+package pl.dominikasmorag.ui.command;
 
 import pl.dominikasmorag.DataBase.DAO;
 import pl.dominikasmorag.DataBase.ResultDao;
-import pl.dominikasmorag.user_utilities.export.ExportCSV;
-import pl.dominikasmorag.user_utilities.export.ExportHTML;
-import pl.dominikasmorag.user_utilities.export.ExportJSON;
-import pl.dominikasmorag.user_utilities.export.ExportStrategy;
+import pl.dominikasmorag.ui.export.ExportCSV;
+import pl.dominikasmorag.ui.export.ExportHTML;
+import pl.dominikasmorag.ui.export.ExportJSON;
+import pl.dominikasmorag.ui.export.ExportStrategy;
 
 import java.util.HashMap;
 import java.util.Map;

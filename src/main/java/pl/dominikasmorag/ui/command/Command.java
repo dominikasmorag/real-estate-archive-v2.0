@@ -1,4 +1,4 @@
-package pl.dominikasmorag.user_utilities.command;
+package pl.dominikasmorag.ui.command;
 
 @FunctionalInterface
 public interface Command {
