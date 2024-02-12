@@ -12,7 +12,6 @@ public class ExportCSV extends ExportStrategy {
 
     private final static String EXTENSION = ".csv";
 
-    private final static String[] COLUMN_NAMES = {"Id", "Location", "Description", "Square meters", "Price [PLN]", "Link", "Image url", "Posting date", "DateTime of scraping"};
     public ExportCSV(DAO<Result> resultDao) {
         super(resultDao);
         fileName += EXTENSION;

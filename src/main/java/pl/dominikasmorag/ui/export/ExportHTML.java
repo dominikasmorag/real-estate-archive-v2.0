@@ -5,13 +5,11 @@ import pl.dominikasmorag.pojo.Result;
 
 import java.io.*;
 
-
-
 public class ExportHTML extends ExportStrategy {
     private final static String EXTENSION = ".html";
     private final static String OPEN_TABLE = "<html> <body> <table>";
     private final static String CLOSE_TABLE = "</table> </body> </html>";
-    private final static String[] COLUMN_NAMES = {"Id", "Location", "Description", "Square meters", "Price [PLN]", "Link", "Image url", "Posting date", "DateTime of scraping"};
+
     private final static String CSS = "<style>" +
             "table { border-collapse: collapse;" +
             "       width: 100%; }" +
@@ -56,17 +54,17 @@ public class ExportHTML extends ExportStrategy {
         }
         sb.append("</tr>");
 
-        for(int i=0; i<resultList.size(); i++) {
+        for (Result result : resultList) {
             sb.append("<tr>");
-            sb.append("<td>").append(resultList.get(i).getId()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getLocation()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getDescription()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getSquareFootage()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getPrice()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getLink()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getImgUrl()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getPostingDate()).append("</td>");
-            sb.append("<td>").append(resultList.get(i).getTimestamp()).append("</td>");
+            sb.append("<td>").append(result.getId()).append("</td>");
+            sb.append("<td>").append(result.getLocation()).append("</td>");
+            sb.append("<td>").append(result.getDescription()).append("</td>");
+            sb.append("<td>").append(result.getSquareFootage()).append("</td>");
+            sb.append("<td>").append(result.getPrice()).append("</td>");
+            sb.append("<td>").append(result.getLink()).append("</td>");
+            sb.append("<td>").append(result.getImgUrl()).append("</td>");
+            sb.append("<td>").append(result.getPostingDate()).append("</td>");
+            sb.append("<td>").append(result.getTimestamp()).append("</td>");
             sb.append("</tr>");
         }
         sb.append(CLOSE_TABLE);
