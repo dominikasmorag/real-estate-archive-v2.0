@@ -22,11 +22,5 @@ public class ExportCommand implements Command {
     public ExportStrategy getExportStrategy() {
         return exportStrategy;
     }
-
-    @Override
-    public String toString() {
-        return "ExportCommand{" +
-                "exportStrategy=" + exportStrategy +
-                '}';
-    }
+    
 }
