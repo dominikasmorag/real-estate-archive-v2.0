@@ -22,5 +22,5 @@ public class ExportCommand implements Command {
     public ExportStrategy getExportStrategy() {
         return exportStrategy;
     }
-    
+
 }
