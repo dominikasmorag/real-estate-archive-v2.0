@@ -1,7 +1,7 @@
 package pl.dominikasmorag.ui.command;
 
 import org.junit.jupiter.api.Test;
-import pl.dominikasmorag.DataBase.ResultDao;
+import pl.dominikasmorag.database.ResultDao;
 import pl.dominikasmorag.ui.export.ExportCSV;
 import pl.dominikasmorag.ui.export.ExportHTML;
 import pl.dominikasmorag.ui.export.ExportJSON;
