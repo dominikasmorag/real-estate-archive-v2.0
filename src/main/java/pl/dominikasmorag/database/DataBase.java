@@ -1,4 +1,4 @@
-package pl.dominikasmorag.DataBase;
+package pl.dominikasmorag.database;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package pl.dominikasmorag.DataBase;
+package pl.dominikasmorag.database;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +11,8 @@ public interface DAO<T> {
     List<T> findAll() throws SQLException;
 
     void save(T t) throws SQLException;
+
+    void saveAll(List<T> list) throws SQLException;
 
     void delete(T t) throws SQLException;
 }

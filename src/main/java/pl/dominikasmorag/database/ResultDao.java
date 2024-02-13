@@ -1,4 +1,4 @@
-package pl.dominikasmorag.DataBase;
+package pl.dominikasmorag.database;
 
 import pl.dominikasmorag.pojo.Result;
 
@@ -62,6 +62,12 @@ public class ResultDao implements DAO<Result> {
         statement.setDate(7, new Date(date.getYear(), date.getMonth(), date.getDate()));
         statement.setTimestamp(8, result.getTimestamp());
         statement.executeUpdate();
+    }
+
+    public void saveAll(List<Result> list) throws SQLException {
+        for (Result r : list) {
+            save(r);
+        }
     }
 
     @Override
