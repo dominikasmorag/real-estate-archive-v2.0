@@ -28,11 +28,12 @@ public class ResultInfo {
     public List<Result> scrapAllResults(List<String> existingResults) throws IOException {
         List<Result> results = new ArrayList<>();
         for(String s : urls) {
+            System.out.println("page " + (urls.indexOf(s) + 1) + "/" + urls.size() + " complete");
             document = Jsoup.connect(s).timeout(10 * 1000).get();
             elements = findElements();
             for(Element element : elements) {
                 String link = findLink(element);
-                if(existingResults.contains(link)) {
+                if(existingResults.contains(link) || results.stream().anyMatch(result -> link.equals(result.getLink()))) {
                     continue;
                 }
                 String location = findLocation(element);
@@ -53,6 +54,7 @@ public class ResultInfo {
                 result.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
             }
         }
+        System.out.println("new records added: " + results.size());
         return results;
     }
 
