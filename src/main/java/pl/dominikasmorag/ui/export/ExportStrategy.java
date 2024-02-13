@@ -1,7 +1,7 @@
 package pl.dominikasmorag.ui.export;
 
 
-import pl.dominikasmorag.DataBase.DAO;
+import pl.dominikasmorag.database.DAO;
 import pl.dominikasmorag.pojo.Result;
 
 import java.io.BufferedWriter;
