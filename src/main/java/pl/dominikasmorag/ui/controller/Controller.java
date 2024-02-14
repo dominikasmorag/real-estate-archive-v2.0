@@ -39,7 +39,7 @@ public class Controller {
                 Command command = CommandFactory.createCommand(userInput, resultDao);
                 command.execute();
             } catch (NullPointerException ex) {
-                ex.printStackTrace();
+                System.err.println("This command doesn't exist, type 'help' to display available commands");
             }
         }
     }
