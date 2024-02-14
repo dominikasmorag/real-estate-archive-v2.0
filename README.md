@@ -1,10 +1,13 @@
 <h1>Real-estate archiver</h1>
 
-<h3>This app is a simple web scraper to get data regarding advertisements of apartments for sale. == </h3>
+<h3>This app is a simple web scraper to get data regarding advertisements of apartments for sale. </h3>
 
-<h3>Used technologies: <br/>
+<h3>
+  Used technologies: <br/>
 <strong>-H2 database</strong> - for better performance, because this app contains only one table in database <br/>
-<strong>-JSoup</strong></h3>
+<strong>-JSoup</strong> <br/>
+<strong>-JUnit</strong>
+</h3>
 
 Use _help_ command to display available commands:
 
