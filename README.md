@@ -2,7 +2,7 @@
 
 <h3>This app is a simple web scraper to get data regarding advertisements of apartments for sale. == </h3>
 
-<h3>Used technologies:
+<h3>Used technologies: <br/>
 <strong>-H2 database</strong> - for better performance, because this app contains only one table in database <br/>
 <strong>-JSoup</strong></h3>
 
