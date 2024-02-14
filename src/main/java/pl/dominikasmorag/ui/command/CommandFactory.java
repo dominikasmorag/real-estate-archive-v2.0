@@ -27,8 +27,15 @@ public class CommandFactory {
             userInput = splitter[1];
             return new ExportCommand(getExportStrategy(userInput));
         }
-        else if(userInput.equalsIgnoreCase("initiate-webscraping")) {
+        if(userInput.equals("initiate-webscraping")) {
             return new ScrapingCommand(Controller.getResultDao());
+        }
+
+        if(userInput.equals("help")) {
+            return new HelpCommand();
+        }
+        if(userInput.equals("exit")) {
+            return new ExitCommand();
         }
         return null;
     }
