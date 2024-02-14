@@ -6,14 +6,11 @@ import pl.dominikasmorag.ui.export.ExportCSV;
 import pl.dominikasmorag.ui.export.ExportHTML;
 import pl.dominikasmorag.ui.export.ExportJSON;
 
-import java.sql.Connection;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommandFactoryTest {
 
-    Connection conn = null;
-    ResultDao resultDao = new ResultDao(conn);
+    ResultDao resultDao = new ResultDao(null);
 
 
     @Test
@@ -40,5 +37,22 @@ class CommandFactoryTest {
         assertNull(exportCommand.getExportStrategy());
     }
 
+    @Test
+    void exitReturnsExitCommand() {
+        ExitCommand exitCommand = (ExitCommand) CommandFactory.createCommand("exit", resultDao);
+        assertNotNull(exitCommand);
+    }
+
+    @Test
+    void helpReturnsHelpCommand() {
+        HelpCommand helpCommand = (HelpCommand) CommandFactory.createCommand("exit", resultDao);
+        assertNotNull(helpCommand);
+    }
+
+    @Test
+    void scrapingReturnsScrapingCommand() {
+        ScrapingCommand scrapingCommand = (ScrapingCommand) CommandFactory.createCommand("initiate-webscraping", resultDao);
+        assertNotNull((scrapingCommand));
+    }
 
 }
